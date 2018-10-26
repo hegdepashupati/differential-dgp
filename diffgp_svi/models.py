@@ -33,8 +33,9 @@ class DiffGP:
         for s in range(num_samples):
             _Xt, _Xs = self.sde_solver.forward(X,save_intermediate)
             Xt.append(_Xt[None,:,:])
-        if save_intermediate:
-            Xs.append(_Xs[None,:,:,:])
+            if save_intermediate:
+                Xs.append(_Xs[None,:,:,:])
+
         Xt = tf.concat(Xt,axis=0)
         if save_intermediate:
             Xs = tf.concat(Xs,axis=0)
